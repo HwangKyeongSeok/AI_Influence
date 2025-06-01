@@ -38,7 +38,7 @@
       position: relative;
       min-height: 300px;
       padding: 2rem;
-      padding-bottom: 6rem; /* 하단 버튼들 공간 확보 */
+      padding-bottom: 6rem;
     }
 
     .btn-dark {
@@ -157,7 +157,14 @@
             {% else %}
               <form method="post" action="{% url 'login_controller' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <div class="mb-3">
+                  {{ form.username.label_tag }}
+                  {{ form.username }}
+                </div>
+                <div class="mb-3">
+                  {{ form.password.label_tag }}
+                  {{ form.password }}
+                </div>
                 <button type="submit" class="btn btn-dark w-100 mb-2">Login</button>
               </form>
               <a href="{% url 'sign_up' %}" class="btn btn-outline-dark w-100">SignUp</a>
